@@ -8,7 +8,7 @@ This project just works for unix-line.
 === The common problem
 If you have been using some api to get mime-type by extension... it doesn't reflects the truth... see an example:
 
-A file called foo.pdf with an extension pdf and the content is a pdf(with header %PDF-1.4ˆM) then your api will work file but whether the user rename foo.pdf to foo.txt your api will fail or better it will determine incompatible data with the file extension.
+A file called foo.pdf with an extension pdf and the content is a pdf(with header %PDF-1.4ˆM) then your api will work fine but whether the user renames foo.pdf to foo.txt your api will fail or better it will determine incompatible data with the file extension.
 
 Using the command 'file' this will work the way that you are expecting. See into your shell.
  
