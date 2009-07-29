@@ -3,7 +3,7 @@ It works as a module of File and the unix command 'file' http://developer.apple.
 /usr/share/file/magic, etc) that gives to the system the way to get file info.
 
 
-This project just works for unix-line.
+This project just works for unix-like.
 
 === The common problem
 If you have been using some api to get mime-type by extension... it doesn't reflects the truth... see an example:
