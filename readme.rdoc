@@ -1,0 +1,67 @@
+The purpose of gem filedesc is to help the developers to get information about local files such as mime-type,size,gid,description so on.
+It works as a module of File and the unix command 'file' http://developer.apple.com/documentation/Darwin/Reference/Manpages/man1/file.1.html i.e. it doesn't uses statical map to determine mime-type instead of it uses a couple of 'magic files' (/usr/share/file/magic.mgc,
+/usr/share/file/magic, etc) that gives to the system the way to get file info.
+
+
+This project just works for unix-line.
+
+=== The common problem
+If you have been using some lib to get mime-type by extension... it not reflect the trust... see an example:
+
+A file called foo.pdf there is an extension pdf and the content is a pdf then your api will work file but whether the user rename the foo.pdf to foo.txt your api will fail or better that will determine incompatible data with the file extension.
+
+Using the command 'file' will work the way that you are expecting. See into shell.
+ 
+ shairon -> tmp: file foo.pdf 
+ foo.pdf: PDF document, version 1.4
+ shairon -> tmp: mv foo.pdf foo.txt
+ shairon -> tmp: file foo.txt 
+ foo.txt: PDF document, version 1.4
+
+Got it?
+
+===Installation 
+ sudo gem sources --add http://gems.github.com
+ sudo gem install shairontoledo-filedesc
+or from rubyforge
+ sudo gem install filedesc
+
+===How to Use
+the filedesc is a module auto include into class File, so you can use it the same way but don't forget the require 'filedesc'.
+
+ require 'filedesc'
+
+ file=File.new('Desktop/Picture 1.png')
+ file.mime         #=> 'image/png'
+ file.description  #=> 'PNG image data, 773 x 519, 8-bit/color RGB, non-interlaced'
+
+===There are help methods 
+
+ file.is_a_mime?('image/png') #=> true
+ file.is_a_mime?(/^image/)    #=> true
+ file.has_description?(/8-bit\/color.*RGB/) #=> true
+ file.extension   #=> "png"
+
+And finally the method File#info that gets relevant information about the file as a Hash.
+
+ file.info
+
+It will return something like 
+
+ {
+  :last_modified=>Wed Jul 29 18:42:42 -0400 2009,
+  :filename=>"Picture 1.png", 
+  :last_access=>Wed Jul 29 18:45:11 -0400 2009,
+  :mode=>33188, 
+  :path=>"/Users/shairon/Desktop/Picture 1.png", 
+  :executable=>false, :extension=>"png", 
+  :mime=>"image/png", 
+  :uid=>501, 
+  :description=>"PNG image data, 773 x 519, 8-bit/color RGB, non-interlaced", 
+  :gid=>20, 
+  :size=>154504, 
+  :directory=>"/Users/shairon/Desktop"
+ }
+
+
+ 
