@@ -63,7 +63,7 @@ It will return something like
  }
 
 ==File#inspect
-The file inspect won mime-type, description and extension
+The file inspect with new format with mime-type, description and extension.
 
  Dir.glob('*'){|f| puts File.open(f).inspect }
  
