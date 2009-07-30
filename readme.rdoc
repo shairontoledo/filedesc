@@ -21,9 +21,7 @@ Using the command 'file' this will work the way that you are expecting. See into
 Got it?
 
 ===Installation 
- sudo gem sources --add http://gems.github.com
- sudo gem install shairontoledo-filedesc
-or from rubyforge
+
  sudo gem install filedesc
 
 ===How to Use
