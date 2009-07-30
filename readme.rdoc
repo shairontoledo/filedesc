@@ -64,5 +64,20 @@ It will return something like
   :directory=>"/Users/shairon/Desktop"
  }
 
+==File#inspect
+The file inspect won mime-type, description and extension
 
+ Dir.glob('*'){|f| puts File.open(f).inspect }
  
+Returns
+
+
+ #<File:foo.doc, mime: 'application/msword', description: 'Microsoft Office Document', extension: 'doc' >
+ #<File:foo.htm, mime: 'text/html', description: 'HTML document text', extension: 'htm' >
+ #<File:foo.rtf, mime: 'text/rtf', description: 'Rich Text Format data, version 1,', extension: 'rtf' >
+ #<File:foo.pdf, mime: 'application/pdf', description: 'PDF document, version 1.3', extension: 'pdf' >
+ #<File:foo.txt, mime: 'text/plain; charset=unknown', description: 'Non-ISO extended-ASCII text, with CR line terminators', extension: 'txt' >
+ #<File:foo.mp3, mime: 'audio/mpeg', description: 'MP3 file with ID3 version 2.3.0 tag', extension: 'mp3' >
+ #<File:foo.png, mime: 'image/png', description: 'PNG image data, 773 x 417, 8-bit/color RGBA, non-interlaced', extension: 'png' >
+ #<File:foo.jpg, mime: 'image/jpeg', description: 'JPEG image data, JFIF standard 1.01', extension: 'jpg' >
+ #<File:foo.zip, mime: 'application/x-zip', description: 'Zip archive data, at least v2.0 to extract', extension: 'zip' >
