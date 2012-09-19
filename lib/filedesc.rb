@@ -6,6 +6,7 @@ module FileDescription
     @mime ||= get_output('-I')
     @mime
   end
+
   def is_a_mime?(type)
     return case type
     when String
@@ -23,10 +24,9 @@ module FileDescription
   def has_description?(regexp)
     !(description !~ regexp)
   end
-
   
   def extension
-    self.path.scan(/\.([A-za-z0-9]+)$/).to_s
+    self.path.scan(/\.([A-za-z0-9]+)$/).flatten.last.to_s
   end
 
   def inspect
